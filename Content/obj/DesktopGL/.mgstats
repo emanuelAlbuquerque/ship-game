@@ -1,2 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bullet.png","C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bin/DesktopGL/bullet.xnb","TextureProcessor","Texture2DContent",855,1685,0,4850138
+"C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/background.jpg","C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bin/DesktopGL/background.xnb","TextureProcessor","Texture2DContent",143486,5544085,1,0969151
+"C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bullet.png","C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bin/DesktopGL/bullet.xnb","TextureProcessor","Texture2DContent",855,1685,0,0422167
+"C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/helicopter.png","C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bin/DesktopGL/helicopter.xnb","TextureProcessor","Texture2DContent",33871,137301,0,1036512
+"C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/inimigo1.png","C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bin/DesktopGL/inimigo1.xnb","TextureProcessor","Texture2DContent",33713,137301,0,1979116

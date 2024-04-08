@@ -7,7 +7,6 @@ public class Player : GameObject
 {
     private const float SPEED_Y = 200;
     private SpriteEffects _orientation;
-
     private Bullet _bullet;
 
     public Player(Texture2D image, Texture2D _bulletImage) : base(image)

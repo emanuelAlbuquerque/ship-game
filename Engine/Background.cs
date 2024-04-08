@@ -1,12 +1,12 @@
+using System;
 using Microsoft.Xna.Framework.Graphics;
 
 public class Background : GameObject
 {
-  private float _speedX;
+  private float _speedX = 100;
 
-  public Background(Texture2D image, float speedX) : base(image)
+  public Background(Texture2D image) : base(image)
   {
-    _speedX = speedX;
   }
 
   public override void Update(float deltaTime)
@@ -15,9 +15,9 @@ public class Background : GameObject
     _bounds.X -= (int)(_speedX * deltaTime);
 
     // Se o background sair completamente da tela pela esquerda, reposiciona-o à direita para criar um loop
-    if (_bounds.Right <= 0)
+    if (Math.Abs(_bounds.X) + Globals.SCREEN_WIDTH == _bounds.Width)
     {
-      _bounds.X = _image.Width - 1; // Subtrai 1 para evitar uma possível linha visível na tela
+      _bounds.X = 0;
     }
   }
 }

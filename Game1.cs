@@ -13,6 +13,8 @@ public class Game1 : Game
 
     private Player _player;
 
+    private FiristEnemy _firistEnemy;
+
 
     public Game1()
     {
@@ -29,7 +31,7 @@ public class Game1 : Game
         Globals.SCREEN_HEIGHT = _graphics.PreferredBackBufferHeight;
 
         _player.Initialize();
-
+        _firistEnemy.Initialize();
     }
 
     protected override void LoadContent()
@@ -37,11 +39,14 @@ public class Game1 : Game
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
         Texture2D backgroundImage = Content.Load<Texture2D>("background");
-        _background = new Background(backgroundImage, 100);
+        _background = new Background(backgroundImage);
 
         Texture2D playerImage = Content.Load<Texture2D>("helicopter");
         Texture2D bulletPlayer = Content.Load<Texture2D>("bullet");
         _player = new Player(playerImage, bulletPlayer);
+
+        Texture2D firistEnemy = Content.Load<Texture2D>("inimigo1");
+        _firistEnemy = new FiristEnemy(firistEnemy);
     }
 
     protected override void Update(GameTime gameTime)
@@ -53,6 +58,7 @@ public class Game1 : Game
 
         _background.Update(deltaTime);
         _player.Update(deltaTime);
+        _firistEnemy.Update(deltaTime);
 
         base.Update(gameTime);
     }
@@ -65,6 +71,7 @@ public class Game1 : Game
 
         _background.Draw(_spriteBatch);
         _player.Draw(_spriteBatch);
+        _firistEnemy.Draw(_spriteBatch);
 
         _spriteBatch.End();
 
