@@ -24,3 +24,5 @@ C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\obj\Debug\net
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\obj\Debug\net6.0\ship-game.genruntimeconfig.cache
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\obj\Debug\net6.0\ref\ship-game.dll
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\background.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\helicopter.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\bullet.xnb

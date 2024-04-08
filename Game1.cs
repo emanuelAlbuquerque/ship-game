@@ -11,6 +11,8 @@ public class Game1 : Game
 
     private GameObject _background;
 
+    private Player _player;
+
 
     public Game1()
     {
@@ -21,19 +23,25 @@ public class Game1 : Game
 
     protected override void Initialize()
     {
-        // TODO: Add your initialization logic here
-
-        Texture2D backgroundImage = Content.Load<Texture2D>("background");
-        _background = new Background(backgroundImage, 100);
-
         base.Initialize();
+
+        Globals.SCREEN_WIDTH = _graphics.PreferredBackBufferWidth;
+        Globals.SCREEN_HEIGHT = _graphics.PreferredBackBufferHeight;
+
+        _player.Initialize();
+
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // TODO: use this.Content to load your game content here
+        Texture2D backgroundImage = Content.Load<Texture2D>("background");
+        _background = new Background(backgroundImage, 100);
+
+        Texture2D playerImage = Content.Load<Texture2D>("helicopter");
+        Texture2D bulletPlayer = Content.Load<Texture2D>("bullet");
+        _player = new Player(playerImage, bulletPlayer);
     }
 
     protected override void Update(GameTime gameTime)
@@ -44,6 +52,7 @@ public class Game1 : Game
         float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
         _background.Update(deltaTime);
+        _player.Update(deltaTime);
 
         base.Update(gameTime);
     }
@@ -52,11 +61,10 @@ public class Game1 : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
-
         _spriteBatch.Begin();
 
         _background.Draw(_spriteBatch);
+        _player.Draw(_spriteBatch);
 
         _spriteBatch.End();
 
