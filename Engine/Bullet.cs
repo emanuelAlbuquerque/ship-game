@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 public class Bullet : GameObject
 {
-  private const float SPEED = 200;
+  private const float SPEED = 250;
   public bool isVisible = false;
 
   private SpriteEffects _orientation;
@@ -12,11 +12,8 @@ public class Bullet : GameObject
   {
   }
 
-  public void Initialize(int _x, int _y)
+  public override void Initialize()
   {
-    _bounds.X = _x;
-    _bounds.Y = _y;
-    _orientation = SpriteEffects.None;
   }
 
   public override void Update(float deltaTime)
