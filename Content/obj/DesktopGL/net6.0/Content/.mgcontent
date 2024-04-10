@@ -6,10 +6,16 @@
   <SourceFiles>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/background.jpg</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bullet.png</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/explosao.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/helicopter.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/inimigo1.png</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/sounds/disparo.wav</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/sounds/explosao.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

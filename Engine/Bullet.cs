@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -5,8 +6,6 @@ public class Bullet : GameObject
 {
   private const float SPEED = 250;
   public bool isVisible = false;
-
-  private SpriteEffects _orientation;
 
   public Bullet(Texture2D image) : base(image)
   {
@@ -33,7 +32,15 @@ public class Bullet : GameObject
   {
     if (isVisible)
     {
-      spriteBatch.Draw(_image, _bounds, null, Color.White, 0, Vector2.Zero, _orientation, 0);
+      spriteBatch.Draw(_image, _bounds, Color.White);
+    }
+  }
+  
+  public void CheckCollision(GameObject _firistEnemy, Action _callbackExplosionFiristEnemy)
+  {
+    if (_bounds.Intersects(_firistEnemy.Bounds))
+    {
+      _callbackExplosionFiristEnemy.Invoke();
     }
   }
 }

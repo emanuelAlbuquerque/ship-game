@@ -1,36 +1,59 @@
-// using Microsoft.Xna.Framework;
-// using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
-// public class Explosion : GameObject
-// {
-//   public bool isVisible = false;
+public class Explosion : GameObject
+{
+  public bool _isVisible = false;
+  private Rectangle[] _frames;
+  private int _frameWidth = 45;
+  private int _index;
+  private Timer _timer;
 
-//   public Explosion(Texture2D image) : base(image)
-//   {
-//   }
+  public Explosion(Texture2D image) : base(image)
+  {
+    int frameHeight = 87;
+    int totalFrames = 5;
 
-//   public override void Initialize()
-//   {
-//   }
+    _frames = new Rectangle[totalFrames];
+    for (int i = 0; i < totalFrames; i++)
+    {
+      _frames[i] = new Rectangle(i * _frameWidth, 0, i * _frameWidth, frameHeight);
+    }
+  }
 
-//   public override void Update(float deltaTime)
-//   {
-//     if (isVisible)
-//     {
-//       _bounds.X = _bounds.X + (int)(SPEED * deltaTime);
+  public override void Initialize()
+  {
+    _bounds.Width = _frameWidth;
+    _index = 0;
+    _timer = new Timer();
+    _timer.Start(IncraseIndex, 0.1f, true);
+  }
 
-//       if (_bounds.X >= Globals.SCREEN_WIDTH)
-//       {
-//         isVisible = false;
-//       }
-//     }
-//   }
+  public override void Update(float deltaTime)
+  {
+    if (_isVisible)
+    {
+      _timer.Update(deltaTime);
+    }
+  }
 
-//   public override void Draw(SpriteBatch spriteBatch)
-//   {
-//     if (isVisible)
-//     {
-//       spriteBatch.Draw(_image, _bounds, null, Color.White, 0, Vector2.Zero, _orientation, 0);
-//     }
-//   }
-// }
+  public override void Draw(SpriteBatch spriteBatch)
+  {
+    if (_isVisible)
+    {
+      spriteBatch.Draw(_image, _bounds, _frames[_index], Color.White);
+    }
+  }
+
+  public void IncraseIndex()
+  {
+    _index++;
+    _bounds.Width = _frameWidth * _index;
+
+    if (_index > 4)
+    {
+      _index = 0;
+      _isVisible = false;
+    }
+  }
+}

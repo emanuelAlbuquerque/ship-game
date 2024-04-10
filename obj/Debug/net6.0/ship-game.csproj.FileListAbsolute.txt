@@ -27,3 +27,7 @@ C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\helicopter.xnb
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\bullet.xnb
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\inimigo1.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\explosao.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\obj\Debug\net6.0\ship-game.sourcelink.json
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\sounds\explosao.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\sounds\disparo.xnb

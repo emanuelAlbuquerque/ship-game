@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Input;
 public class Player : GameObject
 {
     private const float SPEED_Y = 200;
-    private Bullet _bullet;
+    public Bullet _bullet;
     private Rectangle[] _frames;
     private int _index;
     private Timer _timer;
@@ -34,12 +34,13 @@ public class Player : GameObject
     {
         _index++;
         if (_index > 1)
+
         {
             _index = 0;
         }
     }
 
-    public override void Update(float deltaTime)
+    public void Update(float deltaTime, Sounds _sounds)
     {
 
         if (Input.GetKey(Keys.W))
@@ -62,6 +63,7 @@ public class Player : GameObject
         {
             if (!_bullet.isVisible)
             {
+                _sounds.ExecuteSoundShot();
                 _bullet.Position = new Point(_bounds.X / 2 + _bounds.Width - 45, _bounds.Y + (_bounds.Height / 2) + 10);
                 _bullet.isVisible = true;
             }
