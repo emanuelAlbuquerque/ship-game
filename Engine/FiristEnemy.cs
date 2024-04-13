@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-class FiristEnemy : GameObject
+public class FiristEnemy : GameObject
 {
   private float SPEED_X = 250;
   public bool _isVisible = false;
@@ -19,20 +19,20 @@ class FiristEnemy : GameObject
     };
   }
 
-  public override void Initialize()
+  public void Initialize(GameObject _secondEnemy)
   {
     _bounds.Width = _bounds.Width / _frames.Length;
-    _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height);
-    _bounds.X = Globals.SCREEN_WIDTH - _bounds.Width;
+    _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height - _secondEnemy.Bounds.Height);
+    _bounds.X = Globals.SCREEN_WIDTH;
     _isVisible = true;
     _index = 0;
     _timerAnimation = new Timer();
     _timerAnimation.Start(IncraseIndex, 0.2f, true);
     _timerGenerate = new Timer();
-    _timerGenerate.Start(Generate, 5.0f, true);
+    _timerGenerate.Start(() => Generate(_secondEnemy), 3.0f, true);
   }
 
-  public override void Update(float deltaTime)
+  public void Update(float deltaTime, GameObject _secondEnemy)
   {
     if (_isVisible)
     {
@@ -40,8 +40,8 @@ class FiristEnemy : GameObject
 
       if (_bounds.X < 0)
       {
-        _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height);
-        _bounds.X = Globals.SCREEN_WIDTH - _bounds.Width;
+        _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height - _secondEnemy.Bounds.Height);
+        _bounds.X = Globals.SCREEN_WIDTH;
       }
 
       _timerAnimation.Update(deltaTime);
@@ -58,17 +58,17 @@ class FiristEnemy : GameObject
     }
   }
 
-  public void Generate()
+  private void Generate(GameObject _secondEnemy)
   {
     if (!_isVisible)
     {
-      _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height);
-      _bounds.X = Globals.SCREEN_WIDTH - _bounds.Width;
+      _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height - _secondEnemy.Bounds.Height);
+      _bounds.X = Globals.SCREEN_WIDTH;
       _isVisible = true;
     }
   }
 
-  public void IncraseIndex()
+  private void IncraseIndex()
   {
     _index++;
     if (_index > 1)

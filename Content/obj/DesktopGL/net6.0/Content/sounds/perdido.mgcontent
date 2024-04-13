@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/sounds/perdido.wav</SourceFile>
+  <SourceTime>2024-04-12T23:55:34.610124-03:00</SourceTime>
+  <DestFile>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bin/DesktopGL/Content/sounds/perdido.xnb</DestFile>
+  <DestTime>2024-04-12T23:57:34.6427498-03:00</DestTime>
+  <Importer>WavImporter</Importer>
+  <ImporterTime>2022-07-26T08:44:56-03:00</ImporterTime>
+  <Processor>SoundEffectProcessor</Processor>
+  <ProcessorTime>2022-07-26T08:44:56-03:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput />
+</PipelineBuildEvent>

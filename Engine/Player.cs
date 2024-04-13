@@ -61,11 +61,11 @@ public class Player : GameObject
 
         if (Input.GetKey(Keys.Space))
         {
-            if (!_bullet.isVisible)
+            if (!_bullet._isVisible)
             {
                 _sounds.ExecuteSoundShot();
                 _bullet.Position = new Point(_bounds.X / 2 + _bounds.Width - 45, _bounds.Y + (_bounds.Height / 2) + 10);
-                _bullet.isVisible = true;
+                _bullet._isVisible = true;
             }
         }
 
@@ -77,5 +77,26 @@ public class Player : GameObject
     {
         spriteBatch.Draw(_image, _bounds, _frames[_index], Color.White);
         _bullet.Draw(spriteBatch);
+    }
+
+    public void CheckCollision(FiristEnemy _firistEnemy, SecondEnemy _secondEnemy, Friend _friend, Action<GameObject> _callbackPlayerCollisonEnemy, Action _callbackCollisionPlayerWithFriend)
+    {
+        if (_bounds.Intersects(_firistEnemy.Bounds) && _firistEnemy._isVisible)
+        {
+            _firistEnemy._isVisible = false;
+            _callbackPlayerCollisonEnemy.Invoke(_firistEnemy);
+        }
+
+        if (_bounds.Intersects(_secondEnemy.Bounds) && _secondEnemy._isVisible)
+        {
+            _secondEnemy._isVisible = false;
+            _callbackPlayerCollisonEnemy.Invoke(_secondEnemy);
+        }
+
+        if (_bounds.Intersects(_friend.Bounds) && _friend._isVisible)
+        {
+            _friend._isVisible = false;
+            _callbackCollisionPlayerWithFriend.Invoke();
+        }
     }
 }

@@ -40,4 +40,9 @@ public class Timer
             }
         }
     }
+
+    public void Reset()
+    {
+        _time = 0.0f;
+    }
 }

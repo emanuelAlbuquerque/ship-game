@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Threading;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -12,9 +13,11 @@ public class Game1 : Game
     private GameObject _background;
     private Player _player;
     private FiristEnemy _firistEnemy;
+    private SecondEnemy _secondEnemy;
     private Explosion _explosion;
     private Sounds _sounds;
-
+    private Friend _friend;
+    private FriendDead _friendDead;
 
     public Game1()
     {
@@ -30,9 +33,12 @@ public class Game1 : Game
         Globals.SCREEN_WIDTH = _graphics.PreferredBackBufferWidth;
         Globals.SCREEN_HEIGHT = _graphics.PreferredBackBufferHeight;
 
+        _secondEnemy.Initialize();
+        _firistEnemy.Initialize(_secondEnemy);
         _player.Initialize();
-        _firistEnemy.Initialize();
         _explosion.Initialize();
+        _friend.Initialize();
+        _friendDead.Initialize();
     }
 
     protected override void LoadContent()
@@ -54,6 +60,15 @@ public class Game1 : Game
 
         Texture2D _explosionTexture = Content.Load<Texture2D>("explosao");
         _explosion = new Explosion(_explosionTexture);
+
+        Texture2D _secondEnemyTexture = Content.Load<Texture2D>("inimigo2");
+        _secondEnemy = new SecondEnemy(_secondEnemyTexture);
+
+        Texture2D _friendTexture = Content.Load<Texture2D>("amigo");
+        _friend = new Friend(_friendTexture);
+
+        Texture2D _friendDeadTexture = Content.Load<Texture2D>("amigo_morte");
+        _friendDead = new FriendDead(_friendDeadTexture);
     }
 
     protected override void Update(GameTime gameTime)
@@ -65,9 +80,14 @@ public class Game1 : Game
 
         _background.Update(deltaTime);
         _player.Update(deltaTime, _sounds);
-        _firistEnemy.Update(deltaTime);
+        _firistEnemy.Update(deltaTime, _secondEnemy);
         _explosion.Update(deltaTime);
-        _player._bullet.CheckCollision(_firistEnemy, CallbackExplosionFiristEnemy);
+        _secondEnemy.Update(deltaTime);
+        _player._bullet.CheckCollision(_firistEnemy, _secondEnemy, CallbackBulletColisionExplosion);
+        _player.CheckCollision(_firistEnemy, _secondEnemy, _friend, CallbackPlayerCollisonEnemy, CallbackCollisionPlayerWithFriend);
+        _friend.Update(deltaTime);
+        _friend.CheckCollision(_secondEnemy, CallbackFriendCollisionEnemy);
+        _friendDead.Update(deltaTime);
 
         base.Update(gameTime);
     }
@@ -82,22 +102,43 @@ public class Game1 : Game
         _player.Draw(_spriteBatch);
         _firistEnemy.Draw(_spriteBatch);
         _explosion.Draw(_spriteBatch);
+        _secondEnemy.Draw(_spriteBatch);
+        _friend.Draw(_spriteBatch);
+        _friendDead.Draw(_spriteBatch);
 
         _spriteBatch.End();
 
         base.Draw(gameTime);
     }
 
-    private void CallbackExplosionFiristEnemy()
+    private void Explosion(GameObject _obj)
     {
-        if (_firistEnemy._isVisible && _player._bullet.isVisible)
-        {
-            _sounds.ExecuteSoundExplosion();
-            _explosion.Position = _firistEnemy.Position;
-            _firistEnemy._isVisible = false;
-            _explosion._isVisible = true;
-            _player._bullet.isVisible = false;
-            _player._bullet.Position = new Point(0, 0);
-        }
+        _sounds.ExecuteSoundExplosion();
+        _explosion.Position = _obj.Position;
+        _explosion._isVisible = true;
+    }
+
+    private void CallbackBulletColisionExplosion(GameObject _obj)
+    {
+        _player._bullet._isVisible = false;
+        _player._bullet.Position = new Point(0, 0);
+        Explosion(_obj);
+    }
+
+    private void CallbackPlayerCollisonEnemy(GameObject _obj)
+    {
+        Explosion(_obj);
+    }
+
+    private void CallbackCollisionPlayerWithFriend()
+    {
+        _sounds.ExecuteSoundRescue();
+    }
+
+    private void CallbackFriendCollisionEnemy(Rectangle _posision)
+    {
+        _sounds.ExecuteSoundDead();
+        _friendDead.Position = _friend.Position;
+        _friendDead._isVisible = true;
     }
 }
