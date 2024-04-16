@@ -83,20 +83,33 @@ public class Player : GameObject
     {
         if (_bounds.Intersects(_firistEnemy.Bounds) && _firistEnemy._isVisible)
         {
-            _firistEnemy._isVisible = false;
-            _callbackPlayerCollisonEnemy.Invoke(_firistEnemy);
+            if (_firistEnemy._isVisible)
+            {
+                _firistEnemy._isVisible = false;
+                _callbackPlayerCollisonEnemy.Invoke(_firistEnemy);
+                _firistEnemy.ResetLocation();
+            }
         }
 
         if (_bounds.Intersects(_secondEnemy.Bounds) && _secondEnemy._isVisible)
         {
-            _secondEnemy._isVisible = false;
-            _callbackPlayerCollisonEnemy.Invoke(_secondEnemy);
+            if (_secondEnemy._isVisible)
+            {
+                _secondEnemy._isVisible = false;
+                _callbackPlayerCollisonEnemy.Invoke(_secondEnemy);
+                _secondEnemy.ResetLocation();
+            }
         }
 
         if (_bounds.Intersects(_friend.Bounds) && _friend._isVisible)
         {
-            _friend._isVisible = false;
-            _callbackCollisionPlayerWithFriend.Invoke();
+            if (_friend._isVisible)
+            {
+                _friend._isVisible = false;
+                _callbackCollisionPlayerWithFriend.Invoke();
+                _friend.ResetLocation();
+                _friend._timerGenerate.Reset();
+            }
         }
     }
 }

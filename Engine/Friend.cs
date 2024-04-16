@@ -91,4 +91,10 @@ public class Friend : GameObject
       _callbackFriendCollisionEnemy.Invoke(_bounds);
     }
   }
+
+  public void ResetLocation()
+  {
+    _bounds.X = 0;
+    _bounds.Y = Globals.SCREEN_HEIGHT - _bounds.Height;
+  }
 }

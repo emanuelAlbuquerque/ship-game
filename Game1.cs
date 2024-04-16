@@ -18,6 +18,12 @@ public class Game1 : Game
     private Sounds _sounds;
     private Friend _friend;
     private FriendDead _friendDead;
+    private Life _life;
+    private int points = 0;
+    private int saveds = 0;
+    private int losts = 0;
+
+    private SpriteFont _font;
 
     public Game1()
     {
@@ -39,6 +45,7 @@ public class Game1 : Game
         _explosion.Initialize();
         _friend.Initialize();
         _friendDead.Initialize();
+        _life.Initialize();
     }
 
     protected override void LoadContent()
@@ -69,6 +76,16 @@ public class Game1 : Game
 
         Texture2D _friendDeadTexture = Content.Load<Texture2D>("amigo_morte");
         _friendDead = new FriendDead(_friendDeadTexture);
+
+        Texture2D[] _lifesTextures = new Texture2D[]
+        {
+            Content.Load<Texture2D>("lifes/energia1"),
+            Content.Load<Texture2D>("lifes/energia2"),
+            Content.Load<Texture2D>("lifes/energia3"),
+        };
+        _life = new Life(_lifesTextures);
+
+        _font = Content.Load<SpriteFont>("arial24");
     }
 
     protected override void Update(GameTime gameTime)
@@ -105,6 +122,9 @@ public class Game1 : Game
         _secondEnemy.Draw(_spriteBatch);
         _friend.Draw(_spriteBatch);
         _friendDead.Draw(_spriteBatch);
+        _life.Draw(_spriteBatch);
+        _spriteBatch.DrawString(_font, string.Format("Pontos: {0} Perdidos: {1} Salvos: {2}", points, losts, saveds), new Vector2(0, 0), Color.White);
+
 
         _spriteBatch.End();
 
@@ -123,16 +143,20 @@ public class Game1 : Game
         _player._bullet._isVisible = false;
         _player._bullet.Position = new Point(0, 0);
         Explosion(_obj);
+        points += 50;
     }
 
     private void CallbackPlayerCollisonEnemy(GameObject _obj)
     {
         Explosion(_obj);
+        _life.DecreaseLife();
     }
 
     private void CallbackCollisionPlayerWithFriend()
     {
         _sounds.ExecuteSoundRescue();
+        saveds++;
+        points += 50;
     }
 
     private void CallbackFriendCollisionEnemy(Rectangle _posision)
@@ -140,5 +164,6 @@ public class Game1 : Game
         _sounds.ExecuteSoundDead();
         _friendDead.Position = _friend.Position;
         _friendDead._isVisible = true;
+        losts++;
     }
 }

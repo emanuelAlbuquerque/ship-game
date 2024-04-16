@@ -77,4 +77,9 @@ public class FiristEnemy : GameObject
     }
   }
 
+  public void ResetLocation()
+  {
+    _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height);
+    _bounds.X = Globals.SCREEN_WIDTH;
+  }
 }

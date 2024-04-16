@@ -53,4 +53,10 @@ public class SecondEnemy : GameObject
       _isVisible = true;
     }
   }
+
+  public void ResetLocation()
+  {
+    _bounds.Y = Globals.SCREEN_HEIGHT - _bounds.Height;
+    _bounds.X = Globals.SCREEN_WIDTH;
+  }
 }
