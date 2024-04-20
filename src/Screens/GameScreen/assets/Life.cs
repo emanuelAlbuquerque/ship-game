@@ -15,6 +15,7 @@ public class Life : GameObject
 
   public override void Initialize()
   {
+    _life = TOTAL_LIFE;
     _bounds.X = Globals.SCREEN_WIDTH - _bounds.Width - 5;
     _bounds.Y = 5;
   }
@@ -34,6 +35,11 @@ public class Life : GameObject
   public void DecreaseLife()
   {
     _life--;
+
+    if (_life == 0)
+    {
+      Globals.GameInstance.ChangeScreen(EScreen.GameOver);
+    }
   }
 
   public int GetLife()

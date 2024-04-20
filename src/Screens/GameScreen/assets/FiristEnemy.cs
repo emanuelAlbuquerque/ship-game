@@ -10,6 +10,7 @@ public class FiristEnemy : GameObject
   private Rectangle[] _frames;
   private int _index;
   private Timer _timerAnimation;
+  private bool _initialized = false;
 
   public FiristEnemy(Texture2D image) : base(image)
   {
@@ -21,7 +22,11 @@ public class FiristEnemy : GameObject
 
   public void Initialize(GameObject _secondEnemy)
   {
-    _bounds.Width = _bounds.Width / _frames.Length;
+    if (!_initialized)
+    {
+      _bounds.Width = _bounds.Width / _frames.Length;
+      _initialized = true;
+    }
     _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height - _secondEnemy.Bounds.Height);
     _bounds.X = Globals.SCREEN_WIDTH;
     _isVisible = true;

@@ -9,6 +9,10 @@ public class Background : GameObject
   {
   }
 
+  public override void Initialize()
+  {
+  }
+
   public override void Update(float deltaTime)
   {
     _bounds.X -= (int)(_speedX * deltaTime);

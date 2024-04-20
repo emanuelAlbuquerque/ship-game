@@ -13,13 +13,16 @@ public class GameScreen : IScreen
   private Friend _friend;
   private FriendDead _friendDead;
   private Life _life;
-  private int points = 0;
-  private int saveds = 0;
-  private int losts = 0;
+  public int points = 0;
+  public int saveds = 0;
+  public int losts = 0;
   private SpriteFont _font;
 
-  public void Initialize()
+  public void Initialize(int _points, int _saveds, int _losts)
   {
+    points = 0;
+    saveds = 0;
+    losts = 0;
     _secondEnemy.Initialize();
     _firistEnemy.Initialize(_secondEnemy);
     _player.Initialize();
@@ -27,6 +30,7 @@ public class GameScreen : IScreen
     _friend.Initialize();
     _friendDead.Initialize();
     _life.Initialize();
+    _background.Initialize();
   }
 
   public void LoadContent(ContentManager content)
@@ -128,5 +132,10 @@ public class GameScreen : IScreen
     _friendDead.Position = _friend.Position;
     _friendDead._isVisible = true;
     losts++;
+  }
+
+  public (int saveds, int points, int losts) GetParameters()
+  {
+    return (saveds, points, losts);
   }
 }

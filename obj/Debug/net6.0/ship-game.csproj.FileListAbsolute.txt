@@ -40,3 +40,8 @@ C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\lifes\energia2.xnb
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\lifes\energia3.xnb
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\arial24.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\instructions.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\end-button.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\play-button.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\game-over-background.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\play-again-button.xnb

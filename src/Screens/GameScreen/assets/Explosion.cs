@@ -24,6 +24,7 @@ public class Explosion : GameObject
   public override void Initialize()
   {
     _bounds.Width = _frameWidth;
+    _isVisible = false;
     _index = 0;
     _timer = new Timer();
     _timer.Start(IncraseIndex, 0.1f, true);

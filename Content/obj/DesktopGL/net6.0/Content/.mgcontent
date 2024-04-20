@@ -9,19 +9,29 @@
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/arial24.spritefont</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/background.jpg</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bullet.png</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/end-button.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/explosao.png</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/game-over-background.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/helicopter.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/inimigo1.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/inimigo2.png</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/instructions.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/lifes/energia1.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/lifes/energia2.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/lifes/energia3.png</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/play-again-button.png</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/play-button.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/sounds/disparo.wav</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/sounds/explosao.wav</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/sounds/perdido.wav</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/sounds/resgate.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

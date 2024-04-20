@@ -11,6 +11,7 @@ public class Friend : GameObject
   public Timer _timerGenerate;
   public bool _isVisible = false;
   private float SPEED_X = 100;
+  private bool _initialized = false;
 
   public Friend(Texture2D image) : base(image)
   {
@@ -28,7 +29,11 @@ public class Friend : GameObject
 
   public override void Initialize()
   {
-    _bounds.Width = _bounds.Width / _frames.Length;
+    if (!_initialized)
+    {
+      _bounds.Width = _bounds.Width / _frames.Length;
+      _initialized = true;
+    }
     _bounds.X = 0;
     _bounds.Y = Globals.SCREEN_HEIGHT - _bounds.Height;
     _index = 0;

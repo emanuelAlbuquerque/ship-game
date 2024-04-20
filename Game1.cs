@@ -10,6 +10,7 @@ public class Game1 : Game
     private IScreen _menuScreen;
     private IScreen _gameScreen;
     private IScreen _currentScreen;
+    private IScreen _gameOverScreen;
 
     public Game1()
     {
@@ -28,9 +29,12 @@ public class Game1 : Game
             case EScreen.Game:
                 _currentScreen = _gameScreen;
                 break;
+            case EScreen.GameOver:
+                _currentScreen = _gameOverScreen;
+                break;
         }
 
-        _currentScreen.Initialize();
+        _currentScreen.Initialize(_gameScreen.GetParameters().points, _gameScreen.GetParameters().saveds, _gameScreen.GetParameters().losts);
     }
 
     protected override void Initialize()
@@ -41,20 +45,23 @@ public class Game1 : Game
         Globals.SCREEN_HEIGHT = _graphics.PreferredBackBufferHeight;
         Globals.GameInstance = this;
 
-        _currentScreen.Initialize();
+        _currentScreen.Initialize(0, 0, 0);
     }
 
     protected override void LoadContent()
     {
         _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-        // _menuScreen = new MenuScreen();
-        // _menuScreen.LoadContent(Content);
+        _menuScreen = new MenuScreen();
+        _menuScreen.LoadContent(Content);
 
         _gameScreen = new GameScreen();
         _gameScreen.LoadContent(Content);
 
-        _currentScreen = _gameScreen;
+        _gameOverScreen = new GameOverScreen();
+        _gameOverScreen.LoadContent(Content);
+
+        _currentScreen = _menuScreen;
     }
 
     protected override void Update(GameTime gameTime)

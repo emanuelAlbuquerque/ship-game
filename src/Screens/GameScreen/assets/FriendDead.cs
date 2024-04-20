@@ -7,6 +7,7 @@ public class FriendDead : GameObject
   private Rectangle[] _frames;
   private int _index;
   private Timer _timer;
+  private bool _initialized = false;
 
   public FriendDead(Texture2D image) : base(image)
   {
@@ -24,7 +25,11 @@ public class FriendDead : GameObject
 
   public override void Initialize()
   {
-    _bounds.Width = _bounds.Width / _frames.Length;
+    if (!_initialized)
+    {
+      _bounds.Width = _bounds.Width / _frames.Length;
+      _initialized = true;
+    }
     _index = 0;
     _timer = new Timer();
     _timer.Start(IncraseIndex, 0.1f, true);

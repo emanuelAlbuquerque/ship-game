@@ -10,6 +10,7 @@ public class Player : GameObject
     private Rectangle[] _frames;
     private int _index;
     private Timer _timer;
+    private bool _initialized = false;
 
     public Player(Texture2D image, Texture2D _bulletImage) : base(image)
     {
@@ -22,7 +23,12 @@ public class Player : GameObject
 
     public override void Initialize()
     {
-        _bounds.Width = _bounds.Width / _frames.Length;
+        if (!_initialized)
+        {
+            _bounds.Width = _bounds.Width / _frames.Length;
+            _initialized = true;
+        }
+
         _bounds.X = 0;
         _bounds.Y = (Globals.SCREEN_HEIGHT / 2) - _bounds.Height;
         _index = 0;
