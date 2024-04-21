@@ -23,8 +23,8 @@ class GameOverScreen : IScreen
     _instructions.X = (Globals.SCREEN_WIDTH / 2) - _instructions.Bounds.Width / 2;
     _instructions.Y = 80;
 
-    _playButton.Initialize(204, 45, 200, 320);
-    _exitButton.Initialize(105, 45, 450, 320);
+    _playButton.Initialize(204, 45, 220, 320);
+    _exitButton.Initialize(105, 45, 470, 320);
   }
 
   public void LoadContent(ContentManager content)

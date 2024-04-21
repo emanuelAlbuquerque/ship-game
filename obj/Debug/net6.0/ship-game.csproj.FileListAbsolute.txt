@@ -45,3 +45,6 @@ C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\play-button.xnb
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\game-over-background.xnb
 C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\play-again-button.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\credits-button.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\credits.xnb
+C:\Users\emanu\Desktop\Faculdade\5° Periodo\Game Engnie\ship-game\bin\Debug\net6.0\Content\back-button.xnb

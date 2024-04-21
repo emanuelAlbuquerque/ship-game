@@ -11,6 +11,7 @@ public class Game1 : Game
     private IScreen _gameScreen;
     private IScreen _currentScreen;
     private IScreen _gameOverScreen;
+    private IScreen _creditsScreen;
 
     public Game1()
     {
@@ -31,6 +32,9 @@ public class Game1 : Game
                 break;
             case EScreen.GameOver:
                 _currentScreen = _gameOverScreen;
+                break;
+            case EScreen.Credits:
+                _currentScreen = _creditsScreen;
                 break;
         }
 
@@ -60,6 +64,9 @@ public class Game1 : Game
 
         _gameOverScreen = new GameOverScreen();
         _gameOverScreen.LoadContent(Content);
+
+        _creditsScreen = new CreditsScreen();
+        _creditsScreen.LoadContent(Content);
 
         _currentScreen = _menuScreen;
     }

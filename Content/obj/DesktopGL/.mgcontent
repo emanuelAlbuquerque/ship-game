@@ -7,8 +7,11 @@
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/amigo_morte.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/amigo.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/arial24.spritefont</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/back-button.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/background.jpg</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/bullet.png</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/credits-button.png</File>
+    <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/credits.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/end-button.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/explosao.png</File>
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/game-over-background.png</File>
@@ -27,6 +30,9 @@
     <File>C:/Users/emanu/Desktop/Faculdade/5° Periodo/Game Engnie/ship-game/Content/sounds/resgate.wav</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
