@@ -18,8 +18,8 @@ class MenuScreen : IScreen
     _instructions.Y = 80;
 
     _playButton.Initialize(105, 45, 200, 300);
-    _creditsButton.Initialize(105, 45, 350, 300);
-    _exitButton.Initialize(105, 45, 500, 300);
+    _creditsButton.Initialize(105, 45, 500, 300);
+    _exitButton.Initialize(105, 45, 350, 300);
   }
 
   public void LoadContent(ContentManager content)
