@@ -131,7 +131,7 @@ public class GameScreen : IScreen
   private void CallbackPlayerCollisonEnemy(GameObject _obj)
   {
     Explosion(_obj);
-    DecreasePoints();
+    DecreasePoints(25);
     _life.DecreaseLife();
   }
 
@@ -155,15 +155,13 @@ public class GameScreen : IScreen
     _sounds.ExecuteSoundDead();
     _friendDead.Position = _friend.Position;
     _friendDead._isVisible = true;
-    DecreasePoints();
+    DecreasePoints(100);
     losts++;
   }
 
-  public void DecreasePoints(){
-    if (points >= 25)
-    {
-      points -= 25;
-    }
+  public void DecreasePoints(int point){
+      points -= point;
+      if(points < 0) points = 0;
   }
 
   public (int saveds, int points, int losts) GetParameters()

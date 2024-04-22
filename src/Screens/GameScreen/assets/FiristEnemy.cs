@@ -47,7 +47,7 @@ public class FiristEnemy : GameObject
       {
         _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height - _secondEnemy.Bounds.Height);
         _bounds.X = Globals.SCREEN_WIDTH;
-        gameScreen.DecreasePoints();
+        gameScreen.DecreasePoints(50);
       }
 
       _timerAnimation.Update(deltaTime);
