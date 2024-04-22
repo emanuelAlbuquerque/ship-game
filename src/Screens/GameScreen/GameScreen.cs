@@ -1,3 +1,4 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -80,7 +81,7 @@ public class GameScreen : IScreen
   {
     _background.Update(deltaTime);
     _player.Update(deltaTime, _sounds);
-    _firistEnemy.Update(deltaTime, _secondEnemy);
+    _firistEnemy.Update(deltaTime, _secondEnemy, this);
     _explosion.Update(deltaTime);
     _secondEnemy.Update(deltaTime);
     foreach (var bullet in _player._bullets)
@@ -130,6 +131,7 @@ public class GameScreen : IScreen
   private void CallbackPlayerCollisonEnemy(GameObject _obj)
   {
     Explosion(_obj);
+    DecreasePoints(25);
     _life.DecreaseLife();
   }
 
@@ -138,6 +140,14 @@ public class GameScreen : IScreen
     _sounds.ExecuteSoundRescue();
     saveds++;
     points += 50;
+    GetLifeRandom();
+  }
+
+  private void GetLifeRandom(){
+    double randomNumber = new Random().NextDouble();
+    if(randomNumber > 0.7){
+      _life.IncrementLife();
+    }
   }
 
   private void CallbackFriendCollisionEnemy(Rectangle _posision)
@@ -145,7 +155,13 @@ public class GameScreen : IScreen
     _sounds.ExecuteSoundDead();
     _friendDead.Position = _friend.Position;
     _friendDead._isVisible = true;
+    DecreasePoints(100);
     losts++;
+  }
+
+  public void DecreasePoints(int point){
+      points -= point;
+      if(points < 0) points = 0;
   }
 
   public (int saveds, int points, int losts) GetParameters()

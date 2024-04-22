@@ -37,16 +37,17 @@ public class FiristEnemy : GameObject
     _timerGenerate.Start(() => Generate(_secondEnemy), 3.0f, true);
   }
 
-  public void Update(float deltaTime, GameObject _secondEnemy)
+  public void Update(float deltaTime, GameObject _secondEnemy, GameScreen gameScreen)
   {
     if (_isVisible)
     {
       _bounds.X = _bounds.X - (int)(SPEED_X * deltaTime);
 
-      if (_bounds.X < 0)
+      if (_bounds.X + _image.Width < 0 )
       {
         _bounds.Y = new Random().Next(0, Globals.SCREEN_HEIGHT - _bounds.Height - _secondEnemy.Bounds.Height);
         _bounds.X = Globals.SCREEN_WIDTH;
+        gameScreen.DecreasePoints(50);
       }
 
       _timerAnimation.Update(deltaTime);

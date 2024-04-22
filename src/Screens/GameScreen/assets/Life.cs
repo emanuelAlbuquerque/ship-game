@@ -42,6 +42,12 @@ public class Life : GameObject
     }
   }
 
+  public void IncrementLife(){
+    if(_life < 3){
+      _life++;
+    }
+  }
+
   public int GetLife()
   {
     return _life;
