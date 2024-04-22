@@ -27,7 +27,7 @@ public class SecondEnemy : GameObject
     {
       _bounds.X = _bounds.X - (int)(SPEED_X * deltaTime);
 
-      if (_bounds.X < 0)
+      if (_bounds.X + _image.Width < 0)
       {
         _isVisible = false;
       }
