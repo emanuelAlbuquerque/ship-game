@@ -5,10 +5,12 @@ using Microsoft.Xna.Framework.Input;
 public class Button : GameObject
 {
     private Action _callback;
+    private MouseState _previousMouseState;
 
     public Button(Texture2D image, Action callback) : base(image)
     {
         _callback = callback;
+        _previousMouseState = Mouse.GetState();
     }
 
     public void Initialize(int _width, int _heigth, int _x, int _y)
@@ -22,12 +24,16 @@ public class Button : GameObject
     public override void Update(float deltaTime)
     {
         MouseState mouseState = Mouse.GetState();
-        if (mouseState.LeftButton == ButtonState.Pressed)
+        if (mouseState.LeftButton == ButtonState.Released)
         {
-            if (_bounds.Contains(mouseState.X, mouseState.Y))
+            if(_previousMouseState.LeftButton == ButtonState.Pressed && _bounds.Contains(_previousMouseState.Position))
             {
-                _callback.Invoke();
+                if (_bounds.Contains(mouseState.X, mouseState.Y))
+                {
+                    _callback.Invoke();
+                }
             }
         }
+        _previousMouseState = mouseState;
     }
 }
