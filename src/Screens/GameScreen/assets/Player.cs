@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -6,19 +7,23 @@ using Microsoft.Xna.Framework.Input;
 public class Player : GameObject
 {
     private const float SPEED_Y = 200;
-    public Bullet _bullet;
+    public List<Bullet> _bullets;
     private Rectangle[] _frames;
     private int _index;
     private Timer _timer;
+    private Texture2D _bulletImage;
     private bool _initialized = false;
+    private float _time;
 
-    public Player(Texture2D image, Texture2D _bulletImage) : base(image)
+    public Player(Texture2D image, Texture2D bulletImage) : base(image)
     {
         _frames = new Rectangle[2]
         {
             new Rectangle(0, 0, 256, 67), new Rectangle(256, 0, 256, 67)
         };
-        _bullet = new Bullet(_bulletImage);
+
+        _bulletImage = bulletImage;
+        _bullets = new List<Bullet>();
     }
 
     public override void Initialize()
@@ -48,7 +53,8 @@ public class Player : GameObject
 
     public void Update(float deltaTime, Sounds _sounds)
     {
-
+        _time = _time + deltaTime;
+        
         if (Input.GetKey(Keys.W))
         {
             if (_bounds.Y > 0)
@@ -65,24 +71,37 @@ public class Player : GameObject
             }
         }
 
-        if (Input.GetKey(Keys.Space))
+        if (Input.GetKey(Keys.Space) && _time > 0.5f)
         {
-            if (!_bullet._isVisible)
-            {
-                _sounds.ExecuteSoundShot();
-                _bullet.Position = new Point(_bounds.X / 2 + _bounds.Width - 45, _bounds.Y + (_bounds.Height / 2) + 10);
-                _bullet._isVisible = true;
-            }
+            _time = 0.0f;
+            Shot(_sounds);
         }
 
         _timer.Update(deltaTime);
-        _bullet.Update(deltaTime);
+        
+        foreach (Bullet bullet in _bullets)
+        {
+            bullet.Update(deltaTime);
+        }
+        
     }
 
     public override void Draw(SpriteBatch spriteBatch)
     {
         spriteBatch.Draw(_image, _bounds, _frames[_index], Color.White);
-        _bullet.Draw(spriteBatch);
+        
+        foreach (Bullet bullet in _bullets)
+        {
+            bullet.Draw(spriteBatch);    
+        }
+    }
+
+    public void Shot(Sounds sound){
+        var bullet = new Bullet(_bulletImage);
+        bullet.Position = new Point(_bounds.X / 2 + _bounds.Width - 45, _bounds.Y + (_bounds.Height / 2) + 10);
+        bullet._isVisible = true;
+        _bullets.Add(bullet);
+        sound.ExecuteSoundShot();
     }
 
     public void CheckCollision(FiristEnemy _firistEnemy, SecondEnemy _secondEnemy, Friend _friend, Action<GameObject> _callbackPlayerCollisonEnemy, Action _callbackCollisionPlayerWithFriend)
@@ -116,6 +135,14 @@ public class Player : GameObject
                 _friend.ResetLocation();
                 _friend._timerGenerate.Reset();
             }
+        }
+    }
+
+    public void ClearAllBullets(){
+        foreach (var bullet in _bullets)
+        {
+            bullet._isVisible = false;
+            bullet.Position = new Point(0, 0);
         }
     }
 }

@@ -31,6 +31,11 @@ public class GameScreen : IScreen
     _friendDead.Initialize();
     _life.Initialize();
     _background.Initialize();
+
+    _firistEnemy.ResetLocation();
+    _secondEnemy.ResetLocation();
+
+    _player.ClearAllBullets();
   }
 
   public void LoadContent(ContentManager content)
@@ -78,7 +83,10 @@ public class GameScreen : IScreen
     _firistEnemy.Update(deltaTime, _secondEnemy);
     _explosion.Update(deltaTime);
     _secondEnemy.Update(deltaTime);
-    _player._bullet.CheckCollision(_firistEnemy, _secondEnemy, CallbackBulletColisionExplosion);
+    foreach (var bullet in _player._bullets)
+    {
+      bullet.CheckCollision(_firistEnemy, _secondEnemy, CallbackBulletColisionExplosion);
+    }
     _player.CheckCollision(_firistEnemy, _secondEnemy, _friend, CallbackPlayerCollisonEnemy, CallbackCollisionPlayerWithFriend);
     _friend.Update(deltaTime);
     _friend.CheckCollision(_secondEnemy, CallbackFriendCollisionEnemy);
@@ -107,10 +115,16 @@ public class GameScreen : IScreen
 
   private void CallbackBulletColisionExplosion(GameObject _obj)
   {
-    _player._bullet._isVisible = false;
-    _player._bullet.Position = new Point(0, 0);
-    Explosion(_obj);
-    points += 50;
+    foreach (var bullet in _player._bullets)
+    {
+      if(bullet.Bounds.Intersects(_obj.Bounds)){
+        bullet._isVisible = false;
+        bullet.Position = new Point(0, 0);
+        Explosion(_obj);
+        points += 50;
+        break;
+      }
+    }
   }
 
   private void CallbackPlayerCollisonEnemy(GameObject _obj)
